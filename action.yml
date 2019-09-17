@@ -1,0 +1,10 @@
+name: 'rust-tarpaulin'
+description: 'Gather Rust code coverage information with Tarpaulin'
+author: 'actions-rs team'
+branding:
+  icon: play-circle
+  color: black
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
