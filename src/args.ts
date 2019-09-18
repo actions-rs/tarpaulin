@@ -24,3 +24,21 @@ function inputBoolean(name: string): boolean {
         return false;
     }
 }
+
+export async function getOptions(): Promise<TarpaulinOptions> {
+    const version = getInput('version');
+
+    // @TODO - should we look at https://github.com/xd009642/tarpaulin/releases/latest
+    //         if the user specifies "latest"?
+
+    return {
+        version,
+    };
+}
+
+export interface TarpaulinOptions {
+    /**
+     * The Git tag of `cargo-tarpaulin` to do download release artifacts from.
+     */
+    version: string
+}

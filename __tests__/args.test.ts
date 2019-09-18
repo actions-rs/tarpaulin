@@ -1,22 +1,19 @@
 import * as args from '../src/args'
 
 const testEnvVars = {
-    INPUT_TOOLCHAIN: 'nightly-2019-04-20',
-    INPUT_DEFAULT: 'false',
-    INPUT_OVERRIDE: 'true'
-}
+    INPUT_VERSION: '0.8.6'
+};
 
-describe('actions-rs/toolchain', () => {
+describe('actions-rs/tarpaulin', () => {
     beforeEach(() => {
-    for (const key in testEnvVars)
-        process.env[key] = testEnvVars[key as keyof typeof testEnvVars]
-    })
+        for (const key in testEnvVars) {
+            process.env[key] = testEnvVars[key as keyof typeof testEnvVars]
+        }
+    });
 
     it('Parses action input into toolchain options', async () => {
-        const result = args.toolchain_args();
+        const result = await args.getOptions();
 
-        expect(result.name).toBe('nightly-2019-04-20');
-        expect(result.default).toBe(false);
-        expect(result.override).toBe(true);
+        expect(result.version).toBe('0.8.6');
     });
 });

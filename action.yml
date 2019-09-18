@@ -8,3 +8,9 @@ branding:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+
+inputs:
+  version:
+    description: 'The version of cargo-tarpaulin to install'
+    required: true
+    default: 'latest'
