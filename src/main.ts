@@ -1,8 +1,8 @@
 const os = require('os');
 const path = require('path');
 
-const download = require('download');
 
+import * as toolCache from '@actions/tool-cache';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as io from '@actions/io';
@@ -33,15 +33,10 @@ async function run() {
     await io.mkdirP(outputDir);
 
     core.info(`[tarpaulin] downloading cargo-tarpaulin from ${config.downloadUrl}`);
-    await download(config.downloadUrl, outputDir, {
-        followRedirect: true,
-        filename: 'tarpaulin.tar.gz',
-    });
+    const tarpaulinTarballPath = await toolCache.downloadTool(config.downloadUrl);
 
     const cargoExecutableDir = path.dirname(cargo);
-
-    core.info(`[tarpaulin] extracting to ${cargoExecutableDir}`);
-    await exec.exec('tar', ['-C', cargoExecutableDir, '-xf', `${outputDir}/tarpaulin.tar.gz`]);
+    await toolCache.extractTar(tarpaulinTarballPath, cargoExecutableDir);
 
     const args = ['tarpaulin', '--out', 'Xml'];
 

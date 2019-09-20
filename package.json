@@ -31,12 +31,11 @@
         "@actions/core": "^1.1.1",
         "@actions/exec": "^1.0.1",
         "@actions/io": "^1.0.1",
+        "@actions/tool-cache": "^1.1.1",
         "@types/node-fetch": "^2.5.1",
-        "download": "^7.1.0",
         "node-fetch": "^2.6.0"
     },
     "devDependencies": {
-        "@types/download": "^6.2.4",
         "@types/jest": "^24.0.13",
         "@types/node": "^12.7.5",
         "@zeit/ncc": "^0.20.5",
