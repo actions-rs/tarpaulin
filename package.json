@@ -28,10 +28,12 @@
         "url": "https://github.com/actions-rs/tarpaulin/issues"
     },
     "dependencies": {
-        "@actions/core": "^1.1.0",
+        "@actions/core": "^1.1.1",
         "@actions/exec": "^1.0.1",
         "@actions/io": "^1.0.1",
-        "download": "^7.1.0"
+        "@types/node-fetch": "^2.5.1",
+        "download": "^7.1.0",
+        "node-fetch": "^2.6.0"
     },
     "devDependencies": {
         "@types/download": "^6.2.4",

@@ -10,10 +10,4 @@ describe('actions-rs/tarpaulin', () => {
             process.env[key] = testEnvVars[key as keyof typeof testEnvVars]
         }
     });
-
-    it('Parses action input into toolchain options', async () => {
-        const result = await args.getOptions();
-
-        expect(result.version).toBe('0.8.6');
-    });
 });

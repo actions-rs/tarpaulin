@@ -16,29 +16,23 @@ function getInput(name: string, options?: core.InputOptions): string {
     return core.getInput(name)
 }
 
-function inputBoolean(name: string): boolean {
-    const value = getInput(name);
-    if (value == 'true' || value == '1') {
-        return true;
-    } else {
-        return false;
-    }
+export interface ActionInputs {
+    requestedVersion: string,
+    releaseEndpoint: string,
+    timeout: string,
+    runType: string,
 }
 
-export async function getOptions(): Promise<TarpaulinOptions> {
-    const version = getInput('version');
-
-    // @TODO - should we look at https://github.com/xd009642/tarpaulin/releases/latest
-    //         if the user specifies "latest"?
+export default function getActionInputs(): ActionInputs {
+    const requestedVersion = getInput('version');
+    const releaseEndpoint = getInput('github-release-endpoint');
+    const runType = getInput('run-types');
+    const timeout = getInput('timeout');
 
     return {
-        version,
+        requestedVersion,
+        releaseEndpoint,
+        runType,
+        timeout
     };
-}
-
-export interface TarpaulinOptions {
-    /**
-     * The Git tag of `cargo-tarpaulin` to do download release artifacts from.
-     */
-    version: string
 }

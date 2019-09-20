@@ -14,3 +14,16 @@ inputs:
     description: 'The version of cargo-tarpaulin to install'
     required: true
     default: 'latest'
+
+  timeout:
+    description: 'The maximum time in seconds without a response from a test before timeout'
+    required: false
+
+  run-types:
+    description: 'The type of the coverage run [possible values: Tests, Doctests]'
+    required: false
+
+  github-release-endpoint:
+    description: 'The URI to get tarpaulin release information from, without the version'
+    required: true
+    default: 'https://api.github.com/repos/xd009642/tarpaulin/releases'
