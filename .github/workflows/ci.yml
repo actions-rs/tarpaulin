@@ -8,6 +8,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Create npm configuration
+      run: echo "//npm.pkg.github.com/:_authToken=${token}" >> .npmrc
+      env:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: "npm ci"
       run: npm ci
 
