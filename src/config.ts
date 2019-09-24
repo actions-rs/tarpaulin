@@ -30,7 +30,6 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
     const type = input.runType ? input.runType : null;
     const timeout = input.timeout ? input.timeout : null;
 
-    console.log(input.runType);
     return {
         downloadUrl,
         timeout,
