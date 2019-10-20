@@ -3,6 +3,11 @@ import fetch from 'node-fetch';
 
 export interface TarpaulinConfig {
     /**
+     * Additional command line options.
+     */
+    additionalOptions: string[],
+
+    /**
      * The URL to download a tarball of cargo-tarpaulin from.
      */
     downloadUrl: string,
@@ -30,7 +35,17 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
     const type = input.runType ? input.runType : null;
     const timeout = input.timeout ? input.timeout : null;
 
+    let additionalOptions: string[] = [];
+
+    if (input.opts !== null) {
+        let opts = input.opts.match(/[^\s]+|"(?:\\"|[^"])+"/g);
+        if (opts !== null) {
+            additionalOptions = opts;
+        }
+    }
+
     return {
+        additionalOptions,
         downloadUrl,
         timeout,
         type,

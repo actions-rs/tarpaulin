@@ -5,6 +5,7 @@ export interface ActionInputs {
     releaseEndpoint: string,
     timeout: string,
     runType: string,
+    opts: string | null,
 }
 
 export default function getActionInputs(): ActionInputs {
@@ -12,11 +13,13 @@ export default function getActionInputs(): ActionInputs {
     const releaseEndpoint = input.getInput('github-release-endpoint');
     const runType = input.getInput('run-types');
     const timeout = input.getInput('timeout');
+    const opts = input.getInput('tarpaulin-args');
 
     return {
         requestedVersion,
         releaseEndpoint,
         runType,
-        timeout
+        timeout,
+        opts
     };
 }

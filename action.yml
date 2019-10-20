@@ -15,6 +15,10 @@ inputs:
     required: true
     default: 'latest'
 
+  tarpaulin-args:
+    required: false
+    description: 'Extra command line arguments passed to cargo-tarpaulin'
+
   timeout:
     description: 'The maximum time in seconds without a response from a test before timeout'
     required: false
