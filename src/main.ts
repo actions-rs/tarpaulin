@@ -24,7 +24,7 @@ async function run() {
 
     core.addPath(tarpaulinBinPath);
 
-    const args = ['tarpaulin', '--out', 'Xml'];
+    let args = ['tarpaulin', '--out', 'Xml'];
     const additionalArgs = config.additionalOptions;
 
     if (!additionalArgs.includes('--run-types') && config.type !== null) {
@@ -35,7 +35,7 @@ async function run() {
         args.push('--timeout', config.timeout);
     }
 
-    additionalArgs.forEach(item => args.push(item));
+    args = args.concat(additionalArgs);
 
     core.info(`[tarpaulin] running tests with coverage tracking`);
     await cargo.call(args);

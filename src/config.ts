@@ -1,5 +1,6 @@
 import {ActionInputs} from "./args";
 import fetch from 'node-fetch';
+import parseArgsStringToArgv from 'string-argv';
 
 export interface TarpaulinConfig {
     /**
@@ -43,10 +44,7 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
     let additionalOptions: string[] = [];
 
     if (input.opts !== null) {
-        let opts = input.opts.match(/[^\s]+|"(?:\\"|[^"])+"/g);
-        if (opts !== null) {
-            additionalOptions = opts;
-        }
+        additionalOptions = parseArgsStringToArgv(input.opts);
     }
 
     return {
