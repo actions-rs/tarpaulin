@@ -31,7 +31,12 @@ export interface TarpaulinConfig {
  * @param input The parameters of the action.
  */
 export default async function resolveConfig(input: ActionInputs): Promise<TarpaulinConfig> {
-    const downloadUrl = await getDownloadUrl(input.releaseEndpoint, input.requestedVersion);
+    let releaseEndpoint = 'https://api.github.com/repos/xd009642/tarpaulin/releases';
+    if (process.env.GITHUB_RELEASE_ENDPOINT) {
+        releaseEndpoint = process.env.GITHUB_RELEASE_ENDPOINT;
+    }
+
+    const downloadUrl = await getDownloadUrl(releaseEndpoint, input.requestedVersion);
     const type = input.runType ? input.runType : null;
     const timeout = input.timeout ? input.timeout : null;
 
