@@ -15,7 +15,7 @@ inputs:
     required: true
     default: 'latest'
 
-  tarpaulin-args:
+  args:
     required: false
     description: 'Extra command line arguments passed to cargo-tarpaulin'
 

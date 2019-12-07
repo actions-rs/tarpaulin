@@ -13,7 +13,7 @@ export default function getActionInputs(): ActionInputs {
     const releaseEndpoint = input.getInput('github-release-endpoint');
     const runType = input.getInput('run-types');
     const timeout = input.getInput('timeout');
-    const opts = input.getInput('tarpaulin-args');
+    const opts = input.getInput('args');
 
     return {
         requestedVersion,
