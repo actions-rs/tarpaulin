@@ -8,3 +8,21 @@ branding:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+
+inputs:
+  version:
+    description: 'The version of cargo-tarpaulin to install'
+    required: true
+    default: 'latest'
+
+  args:
+    required: false
+    description: 'Extra command line arguments passed to cargo-tarpaulin'
+
+  timeout:
+    description: 'The maximum time in seconds without a response from a test before timeout'
+    required: false
+
+  run-types:
+    description: 'The type of the coverage run [possible values: Tests, Doctests]'
+    required: false
