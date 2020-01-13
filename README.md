@@ -1,4 +1,4 @@
-# `tarpaulin` Action
+# Rust `tarpaulin` Action
 
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Gitter](https://badges.gitter.im/actions-rs/community.svg)](https://gitter.im/actions-rs/community)
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
@@ -28,10 +28,10 @@ jobs:
           override: true
 
       - name: Run cargo-tarpaulin
-        uses: actions-rs/tarpaulin@v1
+        uses: actions-rs/tarpaulin@v0.1
         with:
           version: '0.9.0'
-          tapaulin-args: '-- --test-threads 1'
+          args: '-- --test-threads 1'
 
       - name: Upload to codecov.io
         uses: codecov/codecov-action@v1.0.2

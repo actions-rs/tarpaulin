@@ -1,6 +1,6 @@
 {
     "name": "rust-tarpaulin",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "private": false,
     "description": "Code coverage report with Tarpaulin",
     "main": "lib/main.js",
