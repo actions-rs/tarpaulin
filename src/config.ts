@@ -65,7 +65,7 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
 async function getDownloadUrl(releaseEndpoint: string, requestedVersion: string): Promise<string> {
     const releaseInfoUri = requestedVersion === 'latest' ?
         `${releaseEndpoint}/latest` :
-        `${releaseEndpoint}/tag/${requestedVersion};`;
+        `${releaseEndpoint}/tags/${requestedVersion}`;
 
     const releaseInfoRequest = await fetch(releaseInfoUri);
     const releaseInfo = await releaseInfoRequest.json();
