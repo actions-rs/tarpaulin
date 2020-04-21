@@ -24,7 +24,7 @@ async function run() {
 
     core.addPath(tarpaulinBinPath);
 
-    let args = ['tarpaulin', '--out', 'Xml'];
+    let args = ["tarpaulin", "--out", config.outType];
     const additionalArgs = config.additionalOptions;
 
     if (!additionalArgs.includes('--run-types') && config.type !== null) {
