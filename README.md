@@ -55,3 +55,4 @@ See [additional recipes here](https://github.com/actions-rs/meta).
 | `run-types` |          | The type of tests to run (`Tests`, or `Doctests`). Runs all by default. May be overridden by `args`.     | string |         |
 | `timeout`   |          | The timeout, in seconds, before cancelling execution of a long running test. May be overriden by `args`. | string |         |
 | `args`      |          | Extra command line arguments that are passed to `cargo-tarpaulin`.                                       | string |         |
+| `out-type`  |          | Output format of coverage report (`Json`, `Toml,`, `Stdout`, `Xml`, `Html`, `Lcov`]. Defaults to `Xml`   | string | Xml     |
