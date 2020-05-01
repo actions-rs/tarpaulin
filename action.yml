@@ -26,3 +26,8 @@ inputs:
   run-types:
     description: 'The type of the coverage run [possible values: Tests, Doctests]'
     required: false
+
+  out-type:
+    description: 'Output format of coverage report [possible values: Json, Toml, Stdout, Xml, Html, Lcov]'
+    required: false
+    default: 'Xml'

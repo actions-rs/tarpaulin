@@ -1,6 +1,8 @@
-import {ActionInputs} from "./args";
 import fetch from 'node-fetch';
 import parseArgsStringToArgv from 'string-argv';
+import { ActionInputs } from "./args";
+
+export type OutputType = "Json" | "Toml" | "Stdout" | "Xml" | "Html" | "Lcov";
 
 export interface TarpaulinConfig {
     /**
@@ -23,6 +25,11 @@ export interface TarpaulinConfig {
      * The maximum time a test can be ran without response before a timeout occurs.
      */
     timeout: string | null,
+
+    /**
+     * Output format of coverage report
+     */
+    outType: OutputType,
 }
 
 /**
@@ -40,6 +47,7 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
     const downloadUrl = await getDownloadUrl(releaseEndpoint, input.requestedVersion);
     const type = input.runType ? input.runType : null;
     const timeout = input.timeout ? input.timeout : null;
+    const outType = input.outType ? input.outType : "Xml";
 
     let additionalOptions: string[] = [];
 
@@ -52,6 +60,7 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
         downloadUrl,
         timeout,
         type,
+        outType,
     };
 }
 
