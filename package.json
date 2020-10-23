@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@actions-rs/core": "0.0.9",
-        "@actions/core": "^1.2.4",
+        "@actions/core": "^1.2.6",
         "@actions/exec": "^1.0.4",
         "@actions/io": "^1.0.2",
         "@actions/tool-cache": "^1.3.4",
@@ -39,12 +39,12 @@
         "string-argv": "^0.3.1"
     },
     "devDependencies": {
-        "@types/jest": "^25.2.1",
-        "@types/node": "^13.13.4",
-        "@zeit/ncc": "^0.22.1",
-        "jest": "^25.5.3",
-        "jest-circus": "^25.5.3",
-        "ts-jest": "^25.4.0",
-        "typescript": "^3.8.3"
+        "@types/jest": "^25.2.3",
+        "@types/node": "^13.13.28",
+        "@zeit/ncc": "^0.22.3",
+        "jest": "^25.5.4",
+        "jest-circus": "^25.5.4",
+        "ts-jest": "^25.5.1",
+        "typescript": "^3.9.7"
     }
 }
