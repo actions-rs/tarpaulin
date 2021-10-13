@@ -29,6 +29,8 @@ jobs:
 
       - name: Run cargo-tarpaulin
         uses: actions-rs/tarpaulin@v0.1
+        env:
+          GITHUB_RELEASE_ENDPOINT: https://api.github.com/repos/USERNAME/REPO/releases # optional, see below
         with:
           version: '0.15.0'
           args: '-- --test-threads 1'
@@ -56,3 +58,5 @@ See [additional recipes here](https://github.com/actions-rs/meta).
 | `timeout`   |          | The timeout, in seconds, before cancelling execution of a long running test. May be overriden by `args`. | string |         |
 | `args`      |          | Extra command line arguments that are passed to `cargo-tarpaulin`.                                       | string |         |
 | `out-type`  |          | Output format of coverage report (`Json`, `Toml,`, `Stdout`, `Xml`, `Html`, `Lcov`]. Defaults to `Xml`   | string | Xml     |
+
+This action also supports the `GITHUB_RELEASE_ENDPOINT` environmental variable to use a different tarpaulin repository  ([xd009642/tarpaulin](https://github.com/xd009642) is used by default). Releases should contain a `.tar.gz` archive of an x86_64 Linux executable.
