@@ -79,7 +79,7 @@ async function getDownloadUrl(releaseEndpoint: string, requestedVersion: string)
     const releaseInfoRequest = await fetch(releaseInfoUri);
     const releaseInfo = await releaseInfoRequest.json();
     const asset = releaseInfo["assets"].find(asset => {
-        return asset['content_type'] === 'application/gzip';
+        return asset['content_type'] === 'application/gzip' || asset['content_type'] === 'application/x-gzip';
     });
 
     if (!asset) {
