@@ -50,9 +50,12 @@ See [additional recipes here](https://github.com/actions-rs/meta).
 ## Inputs
 
 | Name        | Required | Description                                                                                              | Type   | Default |
-| ------------| :------: | ---------------------------------------------------------------------------------------------------------| ------ | --------|
+| ----------- | :------: | -------------------------------------------------------------------------------------------------------- | ------ | ------- |
 | `version`   |          | The version of `cargo-tarpaulin` that will be installed.                                                 | string | latest  |
 | `run-types` |          | The type of tests to run (`Tests`, or `Doctests`). Runs all by default. May be overridden by `args`.     | string |         |
 | `timeout`   |          | The timeout, in seconds, before cancelling execution of a long running test. May be overriden by `args`. | string |         |
 | `args`      |          | Extra command line arguments that are passed to `cargo-tarpaulin`.                                       | string |         |
 | `out-type`  |          | Output format of coverage report (`Json`, `Toml,`, `Stdout`, `Xml`, `Html`, `Lcov`]. Defaults to `Xml`   | string | Xml     |
+
+## Permissions
+Additionaly you MUST configure the permission to give the action write permissions. As detailed in this guide  [managing-your-repositorys-settings-and-features/enabling-features-for-your-repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-private-repository-forks)
