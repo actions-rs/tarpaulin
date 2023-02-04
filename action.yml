@@ -6,12 +6,17 @@ branding:
   color: black
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
 
 inputs:
   version:
     description: 'The version of cargo-tarpaulin to install'
+    required: true
+    default: 'latest'
+  
+  target:
+    description: 'The target to install for cargo-tarpaulin'
     required: true
     default: 'latest'
 
