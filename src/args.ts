@@ -3,6 +3,7 @@ import { OutputType } from './config';
 
 export interface ActionInputs {
     requestedVersion: string,
+    target: String,
     timeout: string,
     runType: string,
     opts: string | null,
@@ -11,6 +12,7 @@ export interface ActionInputs {
 
 export default function getActionInputs(): ActionInputs {
     const requestedVersion = input.getInput('version');
+    const target = input.getInput('target');
     const runType = input.getInput('run-types');
     const timeout = input.getInput('timeout');
     const opts = input.getInput('args');
@@ -18,6 +20,7 @@ export default function getActionInputs(): ActionInputs {
 
     return {
         requestedVersion,
+        target,
         runType,
         timeout,
         opts,

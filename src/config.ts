@@ -44,7 +44,7 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
         releaseEndpoint = process.env.GITHUB_RELEASE_ENDPOINT;
     }
 
-    const downloadUrl = await getDownloadUrl(releaseEndpoint, input.requestedVersion);
+    const downloadUrl = await getDownloadUrl(releaseEndpoint, input.target, input.requestedVersion);
     const type = input.runType ? input.runType : null;
     const timeout = input.timeout ? input.timeout : null;
     const outType = input.outType ? input.outType : "Xml";
@@ -71,19 +71,20 @@ export default async function resolveConfig(input: ActionInputs): Promise<Tarpau
  * @param requestedVersion The Git tag of the tarpaulin revision to get a download URL for. May be any valid Git tag,
  * or a special-cased `latest`.
  */
-async function getDownloadUrl(releaseEndpoint: string, requestedVersion: string): Promise<string> {
+async function getDownloadUrl(releaseEndpoint: string, target: String, requestedVersion: string): Promise<string> {
     const releaseInfoUri = requestedVersion === 'latest' ?
         `${releaseEndpoint}/latest` :
         `${releaseEndpoint}/tags/${requestedVersion}`;
 
     const releaseInfoRequest = await fetch(releaseInfoUri);
     const releaseInfo = await releaseInfoRequest.json();
-    const asset = releaseInfo["assets"].find(asset => {
-        return asset['content_type'] === 'application/gzip';
+
+    const asset = releaseInfo["name"].find(asset => {
+        return asset['name'].startsWith(`cargo-tarpaulin-${target}`)
     });
 
     if (!asset) {
-        throw new Error(`Couldn't find a release tarball containing binaries for ${requestedVersion}`);
+        throw new Error(`Couldn't find ${requestedVersion} release tarball containing ${target} binaries`);
     }
 
     return asset["browser_download_url"];
